@@ -37,16 +37,12 @@ func main() {
 
 ## api
 
-### `X` / `ObjectiveFunc`
+### `Poe`
 
 ```go
 type X = map[string]float64
 type ObjectiveFunc = func(X) float64
-```
 
-### `Poe`
-
-```go
 type Poe struct {
 	Objective ObjectiveFunc
 	Trials    Trials
@@ -64,7 +60,7 @@ func (poe *Poe) Minimize(sampler Sampler, numTrials int) *Poe // direction = -1
 func (poe *Poe) Maximize(sampler Sampler, numTrials int) *Poe // direction = +1
 ```
 
-### `Trial`/`Trials`
+### `Trial` / `Trials`
 
 `Trials` stores the results of all executions of the objective function.
 
@@ -106,12 +102,7 @@ func NewSpace(bounds Bounds) Space
 Uniform random sampling over a `Space`. Ignores past trials.
 
 ```go
-type RandomSampler struct {
-	// no exported fields
-}
-
 func NewRandomSampler(space Space) *RandomSampler
-func (sampler *RandomSampler) Sample(_ Trials) X
 ```
 
 ### `TPESampler`
@@ -119,11 +110,5 @@ func (sampler *RandomSampler) Sample(_ Trials) X
 Simple Tree-structured Parzen Estimator sampler. Falls back to random sampling until `len(trials) >= NumCandidates`.
 
 ```go
-type TPESampler struct {
-	Quantile      float64
-	NumCandidates int
-}
-
 func NewTPESampler(space Space, quantile float64, numCandidates int) *TPESampler
-func (sampler *TPESampler) Sample(trials Trials) X
 ```
