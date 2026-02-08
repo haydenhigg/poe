@@ -1,4 +1,4 @@
-package pogo
+package poe
 
 import (
 	"math"

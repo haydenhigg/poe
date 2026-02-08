@@ -1,4 +1,4 @@
-package pogo
+package poe
 
 type Bounds struct {
 	Min float64

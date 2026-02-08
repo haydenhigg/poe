@@ -1,3 +1,3 @@
-module github.com/haydenhigg/pogo
+module github.com/haydenhigg/poe
 
 go 1.25.5
