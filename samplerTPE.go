@@ -57,7 +57,7 @@ func (sampler *TPESampler) kdePDF(
 	wPrior := 1 / (n + 1)
 	wEmp := 1 - wPrior
 
-	return pPrior*wPrior + (pEmpSum / n)*wEmp
+	return pPrior*wPrior + (pEmpSum/n)*wEmp
 }
 
 func (sampler *TPESampler) kdeSample(
@@ -68,7 +68,7 @@ func (sampler *TPESampler) kdeSample(
 	n := trials.N()
 	r := rand.NormFloat64()
 
-	if n == 0 || rand.Float64() < 1 / (n + 1) {
+	if n == 0 || rand.Float64() < 1/(n+1) {
 		return r*sampler.space[k].Width() + sampler.space[k].Midpoint()
 	}
 

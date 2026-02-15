@@ -113,3 +113,9 @@ Simple Tree-structured Parzen Estimator sampler. Falls back to random sampling u
 ```go
 func NewTPESampler(space Space, quantile float64, numCandidates int) *TPESampler
 ```
+
+## to-do
+
+- [x] Write unit tests
+- [ ] Add categorical parameters
+- [ ] Add GP-BO

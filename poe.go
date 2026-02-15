@@ -28,7 +28,7 @@ func (poe *Poe) X() X {
 }
 
 // optimization
-type Sampler interface { Sample(Trials) X }
+type Sampler interface{ Sample(Trials) X }
 
 func (poe *Poe) Optimize(direction int, sampler Sampler, numTrials int) *Poe {
 	// re-sort in case optimization direction is different than it was before

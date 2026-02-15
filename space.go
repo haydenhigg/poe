@@ -1,6 +1,6 @@
 package poe
 
-type Domain struct { Min, Max float64 }
+type Domain struct{ Min, Max float64 }
 
 func NewDomain(bounds [2]float64) *Domain {
 	return &Domain{

@@ -46,7 +46,7 @@ func (trials Trials) Bisected(quantile float64) (Trials, Trials) {
 		return trials, Trials{}
 	}
 
-	index := max(int(trials.N() * quantile), 1)
+	index := max(int(trials.N()*quantile), 1)
 
 	return trials[:index], trials[index:]
 }
