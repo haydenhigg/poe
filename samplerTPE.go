@@ -6,9 +6,9 @@ import (
 )
 
 type TPESampler struct {
-	space              Space
-	Quantile           float64
-	NumCandidates      int
+	space         Space
+	Quantile      float64
+	NumCandidates int
 }
 
 func NewTPESampler(
@@ -58,7 +58,7 @@ func optuna4Bandwidth(domain *Domain, trials Trials, d int) float64 {
 
 // "magic" clipping
 func minBandwidth(domain *Domain, trials Trials) float64 {
-	return (domain.Max - domain.Min) / min(100, trials.N())
+	return (domain.Max - domain.Min) / min(5, trials.N())
 }
 
 func (sampler *TPESampler) Sample(trials Trials) X {
@@ -72,7 +72,7 @@ func (sampler *TPESampler) Sample(trials Trials) X {
 	// infer bandwidths
 	d := len(sampler.space)
 	goodBandwidths := make(map[string]float64, d)
-	badBandwidths := make(map[string]float64,d)
+	badBandwidths := make(map[string]float64, d)
 
 	for k, domain := range sampler.space {
 		minimum := minBandwidth(domain, trials)
